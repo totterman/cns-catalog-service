@@ -10,7 +10,7 @@ public record Book(
         @NotBlank(message = "The book ISBN must be defined.")
         @Pattern(
                 regexp = "^([0-9]{10}|[0-9]{13})$",
-                message = "The ISBN format must be valid."
+                message = "The book ISBN format must be valid."
         )
         String isbn,
 
