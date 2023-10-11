@@ -53,8 +53,8 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
-          distribution: tamarin
-          java-verson: 17
+          distribution: temurin
+          java-version: 17
           cache: gradle
       - name: Build container image
         run: |
@@ -67,7 +67,6 @@ jobs:
           image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:/${{ env.VERSION }}
           fail-build: false
           severity-cutoff: high
-          acs-report-enable: true
       - name: Upload vulnerability report
         uses: github/codeql-action/upload-sarif@v2
         if: success() || failure()
