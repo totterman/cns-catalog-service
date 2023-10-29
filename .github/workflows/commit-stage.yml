@@ -40,8 +40,9 @@ jobs:
           sarif_file: ${{ steps.scan.outputs.sarif }}
       - name: Validate Kubernetes manifests
         uses: docker://ghcr.io/yannh/kubeconform:latest
-        run: |
-          kubectl kustomize k8s | kubeconform -summary -output json -
+        with:
+          entrypoint: '/kubeconform'
+          args: "-summary -output json k8s/"
   package:
     name: Package and Publish
     if: ${{ github.ref == 'refs/heads/main' }}
