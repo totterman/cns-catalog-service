@@ -22,6 +22,7 @@ repositories {
 }
 
 ext {
+	set('otelVersion', "1.26.0")
 	set('snakeyaml.version', '2.0')
 	set('springCloudVersion', "2022.0.4")
 	set('testcontainersVersion', '1.19.1')
@@ -39,6 +40,9 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
 
 	runtimeOnly 'org.postgresql:postgresql'
+	runtimeOnly 'io.micrometer:micrometer-registry-prometheus'
+	runtimeOnly "io.opentelemetry.javaagent:opentelemetry-javaagent:${otelVersion}"
+
 	annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
@@ -72,6 +76,10 @@ bootBuildImage {
 			url = project.findProperty("registryUrl")
 		}
 	}
+}
+
+springBoot {
+	buildInfo()
 }
 
 tasks.named('test') {
