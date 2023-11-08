@@ -26,23 +26,27 @@ public class BookController {
 
     @GetMapping("{isbn}")
     public Book getByIsbn(@PathVariable String isbn) {
+        log.info("Fetching the book with ISBN {} from the catalog", isbn);
         return bookService.viewBookDetails(isbn);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Book post(@Valid @RequestBody Book book) {
+        log.info("Adding a new book with ISBN {} to the catalog", book.isbn());
         return bookService.addBookToCatalog(book);
     }
 
     @PutMapping("{isbn}")
     public Book put(@PathVariable String isbn, @Valid @RequestBody Book book) {
+        log.info("Updating book with ISBN {} in the catalog", book.isbn());
         return bookService.editBookDetails(isbn, book);
     }
 
     @DeleteMapping("{isbn}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable String isbn) {
+        log.info("Deleting book with ISBN {} from the catalog", isbn);
         bookService.removeBookFromCatalog(isbn);
     }
 }
