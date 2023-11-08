@@ -1,5 +1,5 @@
 polar:
-  greeting: Welcome to the book catalog from Kubernetes!
+  greeting: Welcome to the book catalog from Kubernetes development!
 spring:
   datasource:
     url: jdbc:postgresql://polar-postgres/polardb_catalog
