@@ -50,8 +50,7 @@ jobs:
           kustomize
           kubeconform
     - run: |
-        kubeconform -v
-        kustomize  version
+        kustomize build k8s | kubeconform --summary -output json -
   package:
     name: Package and Publish
     if: ${{ github.ref == 'refs/heads/main' }}
