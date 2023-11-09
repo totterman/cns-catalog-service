@@ -8,7 +8,7 @@ resources:
 configMapGenerator:
   - name: catalog-config
     files:
-      - application.yml
+      - app.yml
     options:
       labels:
         app: catalog-service
