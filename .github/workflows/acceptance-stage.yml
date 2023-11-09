@@ -10,7 +10,6 @@ env:
   OWNER: totterman
   REGISTRY: ghcr.io
   APP_NAME: catalog-service
-  APP_REPO: cns-catalog-service
   DEPLOY_REPO: cns-polar-deployments
   VERSION: ${{ github.sha }}
 
