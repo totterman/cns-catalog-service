@@ -9,8 +9,9 @@ concurrency: acceptance
 env:
   OWNER: totterman
   REGISTRY: ghcr.io
+  APP_IMG: catalog-service
   APP_REPO: cns-catalog-service
-  DEPLOY_REPO: cns-polar-deployment
+  DEPLOY_REPO: cns-polar-deployments
   VERSION: ${{ github.sha }}
 
 jobs:
@@ -44,7 +45,7 @@ jobs:
           repository: ${{ env.OWNER }}/${{ env.DEPLOY_REPO }}
           event-type: app_delivery
           client-payload: '{
-            "app-image": "${{ env.REGISTRY }}/${{ env.OWNER }}/${{ env.APP_REPO }}",
+            "app-image": "${{ env.REGISTRY }}/${{ env.OWNER }}/${{ env.APP_IMG }}",
             "app_name": "${{ env.APP_REPO }}",
             "app_version": "${{ env.VERSION }}"
           }'
